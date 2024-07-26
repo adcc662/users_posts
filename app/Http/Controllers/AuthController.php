@@ -7,10 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
+
+/**
+ * @OA\Info(
+ *     title="Users post API",
+ *     version="1.0.0"
+ * )
+ */
 
 
 class AuthController extends Controller
 {
+
+
     /**
      * Create a new AuthController instance.
      *
@@ -22,6 +32,24 @@ class AuthController extends Controller
 //        $this->middleware('auth:web', ['except' => ['login', 'register', 'me']]);
 //    }
 
+    /**
+     * @OA\Post(
+     *     path="/auth/register",
+     *     summary="Register a new user",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name", "email", "password", "password_confirmation"},
+     *             @OA\Property(property="name", type="string", example="John Doe"),
+     *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="Password123!"),
+     *             @OA\Property(property="password_confirmation", type="string", format="password", example="Password123!")
+     *         ),
+     *     ),
+     *     @OA\Response(response=200, description="Success"),
+     *     @OA\Response(response=422, description="Validation Error")
+     * )
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
