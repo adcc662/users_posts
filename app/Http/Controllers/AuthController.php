@@ -12,14 +12,28 @@ use OpenApi\Annotations as OA;
 /**
  * @OA\Info(
  *     title="Users post API",
- *     version="1.0.0"
+ *     version="1.0.0",
+ *     description="API documentation for the Users post API"
  * )
  */
 
+/**
+ * @OA\Schema(
+ *     schema="User",
+ *     type="object",
+ *     title="User",
+ *     properties={
+ *         @OA\Property(property="id", type="integer", example=1),
+ *         @OA\Property(property="name", type="string", example="John Doe"),
+ *         @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *         @OA\Property(property="created_at", type="string", format="date-time", example="2023-10-01T00:00:00Z"),
+ *         @OA\Property(property="updated_at", type="string", format="date-time", example="2023-10-01T00:00:00Z")
+ *     }
+ * )
+ */
 
 class AuthController extends Controller
 {
-
 
     /**
      * Create a new AuthController instance.
@@ -85,6 +99,23 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
+    /**
+     * @OA\Post(
+     *     path="/auth/login",
+     *     summary="Register a User in the app, after this step you can copy the token and create a new post",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="Password123!"),
+     *         ),
+     *     ),
+     *     @OA\Response(response=200, description="Success"),
+     *     @OA\Response(response=401, description="Validation Error")
+     * )
+     */
+
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -100,6 +131,29 @@ class AuthController extends Controller
     {
         return response()->json(auth()->user());
     }
+
+    /**
+     * @OA\Post(
+     *     path="/auth/logout",
+     *     summary="Logout of the application or close the session",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="Password123!"),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful logout"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized"
+     *     )
+     * )
+     */
 
     public function logout()
     {

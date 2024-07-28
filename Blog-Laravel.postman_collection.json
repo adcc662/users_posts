@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "256d482e-9441-4c72-a481-3d240eb69265",
+		"name": "Blog-Laravel",
+		"description": "This API is to complete the test as a Backend Developer PHP for Tally",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18589599"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register one user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Roman\",\r\n  \"email\": \"roman@outlook.com\",\r\n  \"password\": \"Password12!\",\r\n  \"password_confirmation\": \"Password12!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/auth/register",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n   \"email\": \"john@example.com\",\r\n  \"password\": \"Password123!\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/auth/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check users data",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Logout one user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAvYXV0aC9sb2dpbiIsImlhdCI6MTcyMTk0MDYwNiwiZXhwIjoxNzIxOTQ0MjA2LCJuYmYiOjE3MjE5NDA2MDYsImp0aSI6IjZvVGZVVXpuNVY5dmVtWGwiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.VLJweSJYRalhxIQWXM-M4Z1HbkkKJCl67VjQ21VC9E8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n   \"email\": \"john@example.com\",\r\n  \"password\": \"Password123!\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/auth/logout",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragment\n\n- **Register One User**\n    \n    - **Endpoint**: `/auth/register`\n        \n    - **Method**: POST\n        \n    - **Headers**:\n        \n        - `Content-Type: application/json`\n            \n        - `Accept: application/json`\n            \n\n``` json\n{\n  \"name\": \"Roman\",\n  \"email\": \"roman@outlook.com\",\n  \"password\": \"Password12!\",\n  \"password_confirmation\": \"Password12!\"\n}\n\n ```\n\n- **Responses**:\n    \n    - **201 Created**: User registered successfully\n        \n    - **422 Unprocessable Entity**: Validation errors\n        \n- **Login User**\n    \n    - **Endpoint**: `/auth/login`\n        \n    - **Method**: POST\n        \n    - **Headers**:\n        \n        - `Authorization: Bearer {token}`\n            \n\n``` json\n{\n  \"email\": \"john@example.com\",\n  \"password\": \"Password123!\"\n}\n\n ```\n\n- **Responses**:\n    \n    - **200 OK**: Successful login\n        \n    - **401 Unauthorized**: Invalid credentials\n        \n- **Check User Data**\n    \n    - **Endpoint**: `/auth/me`\n        \n    - **Method**: GET\n        \n    - **Headers**:\n        \n        - `Authorization: Bearer {token}`\n            \n    - **Responses**:\n        \n        - **200 OK**: Returns user data\n            \n        - **401 Unauthorized**: Token missing or invalid\n            \n- **Logout One User**\n    \n    - **Endpoint**: `/auth/logout`\n        \n    - **Method**: POST\n        \n    - **Headers**:\n        \n        - `Authorization: Bearer {token}`\n            \n\n``` json\n{\n  \"email\": \"john@example.com\",\n  \"password\": \"Password123!\"\n}\n\n\n ```\n\n- **Request Body**: None\n    \n- **Responses**:\n    \n    - **200 OK**: Successful logout\n        \n    - **401 Unauthorized**: Token missing or invalid\n        \n\nEndFragment"
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Write a new post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAvYXV0aC9sb2dpbiIsImlhdCI6MTcyMjAwOTM0NCwiZXhwIjoxNzIyMDEyOTQ0LCJuYmYiOjE3MjIwMDkzNDQsImp0aSI6IlR4akRDd2RvSzVpRjlTU24iLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.2JftUhMuMNCsYM5aUEoCkasQlo3eBcpCDMQYJx9GbcU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sample Post\",\r\n    \"content\": \"This is the content of the sample post.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/posts",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"posts"
+							]
+						},
+						"description": "**Write a New Post**\n\n- **Endpoint**: `/posts`\n    \n- **Method**: POST\n    \n- **Headers**:\n    \n    - `Authorization: Bearer {token}`\n        \n\nStartFragment**Responses**:\n\n- **201 Created**: Post created successfully\n    \n- **422 Unprocessable Entity**: Validation errors"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one post by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "- **Endpoint**: `/posts/{postId}`\n    \n- **Method**: GET\n    \n- **Headers**:\n    \n    - `Authorization: Bearer {token}`\n        \n- **Responses**:\n    \n    - **200 OK**: Returns post data\n        \n    - **404 Not Found**: Post not found"
+					},
+					"response": []
+				},
+				{
+					"name": "Update one post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAvYXV0aC9sb2dpbiIsImlhdCI6MTcyMjAxMTIwNywiZXhwIjoxNzIyMDE0ODA3LCJuYmYiOjE3MjIwMTEyMDcsImp0aSI6IllkVFA1SzlQdW0zM1Jnb20iLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.tiN7nWWLQ5zsarxDodVEkWlqpyHgD2Sg_KE9y0NXIXk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Django and Python\",\r\n    \"content\": \"Django is a good tool to write good code with best practices in a little bit period of time\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/posts/a267153f-5e5e-44f1-900b-e02309897a41",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"a267153f-5e5e-44f1-900b-e02309897a41"
+							]
+						},
+						"description": "**Update One Post**\n\n- **Endpoint**: `/posts/{postId}`\n    \n- **Method**: PUT\n    \n- **Headers**:\n    \n    - `Authorization: Bearer {token}`\n        \n\nStartFragment**Responses**:\n\n- **200 OK**: Post updated successfully\n    \n- **404 Not Found**: Post not found"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAvYXV0aC9sb2dpbiIsImlhdCI6MTcyMjAxMTIwNywiZXhwIjoxNzIyMDE0ODA3LCJuYmYiOjE3MjIwMTEyMDcsImp0aSI6IllkVFA1SzlQdW0zM1Jnb20iLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.tiN7nWWLQ5zsarxDodVEkWlqpyHgD2Sg_KE9y0NXIXk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/posts/557fb7a6-b951-4826-970e-5572f784ecad",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"557fb7a6-b951-4826-970e-5572f784ecad"
+							]
+						},
+						"description": "**Delete One Post**\n\n- **Endpoint**: `/posts/{postId}`\n    \n- **Method**: DELETE\n    \n- **Headers**:\n    \n    - `Authorization: Bearer {token}`\n        \n- **Responses**:\n    \n    - **200 OK**: Post deleted successfully\n        \n    - **404 Not Found**: Post not found"
+					},
+					"response": []
+				}
+			],
+			"description": "This is the folder to do requests in posts and create it. You can use each of these endpoints"
+		}
+	]
+}
