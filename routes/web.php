@@ -18,16 +18,6 @@ Route::group(['prefix' => 'auth'], function () {
 
 });
 
-Route::get('api/documentation', function () {
-    return view('l5-swagger::index', [
-        'documentation' => 'default',
-        'urlToDocs' => route('l5-swagger.docs', 'default'),
-        'operationsSorter' => null,
-        'configUrl' => null,
-        'validatorUrl' => null,
-        'useAbsolutePath' => false
-    ]);
-});
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/posts', [PostController::class, 'store']);

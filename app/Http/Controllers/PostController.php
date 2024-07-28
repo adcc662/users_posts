@@ -69,13 +69,16 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        if (Auth::id() !== $post->user_id) {
-            return response()->json(['error' => 'Unauthorized'], 403);
+        $post = Post::find($id);
+
+        if (!$post) {
+            return response()->json(['message' => 'Post not found'], 404);
         }
 
         $post->delete();
-        return response()->json(null, 204);
+
+        return response()->json(['message' => 'This post has been deleted']);
     }
 }

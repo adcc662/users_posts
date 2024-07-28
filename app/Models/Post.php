@@ -10,6 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 
+//    public mixed $user_id;
     protected $keyType = 'string';
     public $incrementing = false;
 
