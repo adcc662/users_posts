@@ -8,13 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-/**
- * @OA\Info(
- *     title="Users post API",
- *     version="1.0.0",
- *     description="API documentation for the Users post API"
- * )
- */
+
 
 /**
  * @OA\Schema(
