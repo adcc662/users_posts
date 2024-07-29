@@ -44,7 +44,7 @@ To get a local copy up and running follow these simple steps.
    docker exec -it users_posts-php-1 php artisan l5-swagger:generate
    ```
 
-4. The API should now be available at `http://localhost:8080/`
+4. The API should now be available at `http://localhost:8080/` or `http://localhost:8080/api/documentation` to see the swagger documentation.
 
 ## Usage
 You can find the API documentation in the following Postman Collection file that you can import to your Postman app:
