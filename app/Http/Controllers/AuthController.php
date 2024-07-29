@@ -41,7 +41,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/auth/register",
-     *     summary="Register a new user",
+     *     summary="Register a new user, you copy the token and paste in login to get access to the app",
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -90,7 +90,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/auth/login",
-     *     summary="Register a User in the app, after this step you can copy the token and create a new post",
+     *     summary="Register a User in the app, after this step you can copy the token and create a new post, after you can see another token, paste it and you can do all things to create a new post",
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
