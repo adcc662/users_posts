@@ -10,18 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
 
 /**
- * @OA\Info(
- *     title="Users Post API",
- *     version="1.0.0",
- *     description="API documentation for the Users Post API",
- *     @OA\Contact(
- *         email="support@example.com"
- *     )
- * )
- */
-
-
-/**
  * @OA\Schema(
  *     schema="User",
  *     type="object",

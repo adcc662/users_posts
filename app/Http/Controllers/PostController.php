@@ -7,13 +7,6 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use OpenApi\Annotations as OA;
 
-/**
- * @OA\Info(
- *     title="Users post API",
- *     version="1.0.0",
- *     description="API documentation for the Users post API"
- * )
- */
 
 /**
  * @OA\Schema(
