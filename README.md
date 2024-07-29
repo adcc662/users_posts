@@ -16,6 +16,14 @@ To get a local copy up and running follow these simple steps.
 
 - Docker
 
+
+### Image of the Database Diagram
+![This is an image](/images/img.png)
+
+
+### Installation
+
+
 1. Clone the repository
    ```sh
    git clone git@github.com:adcc662/users_posts.git
@@ -42,3 +50,11 @@ You can find the API documentation in the following Postman Collection file that
 [Postman Collection](Blog-Laravel.postman_collection.json)
 
 Note: You need to use Bearer Token when you register one user and then login to get the token. You have two tokens when you register a user, you copy the registration token and paste it in login.
+
+## Connect to the Database
+Database credentials are in the `.env` but you need to check ip address of your computer:
+3. Run the migrations and then start the server
+   ```sh
+    ipconfig IPv4 Address
+   ```
+copy and paste it in your database adminer or pgadmin4.
