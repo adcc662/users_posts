@@ -52,8 +52,7 @@ You can find the API documentation in the following Postman Collection file that
 Note: You need to use Bearer Token when you register one user and then login to get the token. You have two tokens when you register a user, you copy the registration token and paste it in login.
 
 ## Connect to the Database
-Database credentials are in the `.env` but you need to check ip address of your computer:
-3. Run the migrations and then start the server
+Database credentials are in the `.env` but you need to check ip address of your computer to check the host:
    ```sh
     ipconfig IPv4 Address
    ```

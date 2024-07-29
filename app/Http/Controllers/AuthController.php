@@ -7,7 +7,18 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Info(
+ *     title="Users Post API",
+ *     version="1.0.0",
+ *     description="API documentation for the Users Post API",
+ *     @OA\Contact(
+ *         email="support@example.com"
+ *     )
+ * )
+ */
 
 
 /**
@@ -86,11 +97,7 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+
 
     /**
      * @OA\Post(
