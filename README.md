@@ -41,6 +41,7 @@ To get a local copy up and running follow these simple steps.
    docker exec -it users_posts-php-1 chmod -R 777 storage/
    docker exec -it users_posts-php-1 php artisan config:cache
    docker exec -it users_posts-php-1 php artisan migrate
+   docker exec -it users_posts-php-1 php artisan l5-swagger:generate
    ```
 
 4. The API should now be available at `http://localhost:8080/`
